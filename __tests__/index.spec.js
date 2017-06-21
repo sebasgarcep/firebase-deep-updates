@@ -42,4 +42,11 @@ describe('firebase deep updates testing suite', () => {
   it('should combine slashed keys at all levels of the data tree', () => {
     expect(firebaseDeepUpdates({ 'foo/bar': { 'baz/maz': 'blue' } })).toEqual({ 'foo/bar/baz/maz': 'blue' });
   });
+
+  it('should assign new properties to second parameter when it exists', () => {
+    const old = { foo: 'bar' };
+    const res = firebaseDeepUpdates({ nested: { tree: 'graph' } }, old);
+    expect(res).toBe(old);
+    expect(res).toEqual({ foo: 'bar', 'nested/tree': 'graph' });
+  });
 });
