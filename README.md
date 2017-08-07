@@ -21,7 +21,7 @@ const updates = firebaseDeepUpdates({
 admin.database().ref().update(updates);
 ```
 
-`updates` is equal to:
+where `updates` is equal to:
 
 ```javascript
 {
@@ -30,4 +30,11 @@ admin.database().ref().update(updates);
 }
 ```
 
-You can pass an optional second parameter that will be mutated i.e. the resulting properties will written to it instead of a new object.
+You can also pass an optional second parameter with specific configuration.
+
+### API
+
+#### firebaseDeepUpdates(data, opts)
+- data (any): value (may be a scalar or an object) to be converted.
+- opts (object): set of options.
+  - target (object): mutate this object instead of creating a new one.

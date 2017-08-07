@@ -45,7 +45,15 @@ describe('firebase deep updates testing suite', () => {
 
   it('should assign new properties to second parameter when it exists', () => {
     const old = { foo: 'bar' };
-    const res = firebaseDeepUpdates({ nested: { tree: 'graph' } }, old);
+    const data = {
+      nested: {
+        tree: 'graph',
+      },
+    };
+    const opts = {
+      target: old,
+    };
+    const res = firebaseDeepUpdates(data, opts);
     expect(res).toBe(old);
     expect(res).toEqual({ foo: 'bar', 'nested/tree': 'graph' });
   });
