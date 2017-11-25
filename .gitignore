@@ -4,3 +4,4 @@ dist
 *.log
 *.lock
 index.html
+lib
